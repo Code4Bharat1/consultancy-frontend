@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation"; // Correct import for Next.js App Router
 import Navbar from "../layout/navbar.jsx";
 import ExpertSection from "../expertsection/expertsection.jsx";
 import Footer from "../layout/footer.jsx";
@@ -7,6 +8,8 @@ import { motion } from "framer-motion";
 import AreaOfExpertise from "../areaExpertise/areaExpertise.jsx";
 
 export default function Home() {
+  const router = useRouter(); // Move inside the component
+
   return (
     <div className="bg-white text-blue-500 min-h-screen flex flex-col">
       <Navbar />
@@ -39,7 +42,10 @@ export default function Home() {
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
           className="mt-6 flex flex-col md:flex-row gap-4"
         >
-          <button className="bg-white text-blue-600 px-6 py-3 text-lg font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition">
+          <button 
+            onClick={() => router.push("/appointments")}
+            className="bg-white text-blue-600 px-6 py-3 text-lg font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition"
+          >
             Book a Consultation
           </button>
           <button className="border-2 border-white text-white px-6 py-3 text-lg font-semibold rounded-lg shadow-lg hover:bg-white hover:text-blue-600 transition">

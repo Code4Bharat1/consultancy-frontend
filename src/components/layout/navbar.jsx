@@ -42,7 +42,7 @@ export default function Navbar() {
           </span>
         </Link>
         {["AboutUs", "ContactUs"].map((section) => (
-          <Link key={section} href={`/#${section.toLowerCase()}`}>
+          <Link key={section} href={`/${section.toLowerCase()}`}>
             <span className={`px-4 py-2 rounded-full font-semibold transition-all cursor-pointer ${activeSection === `/${section.toLowerCase()}` ? "bg-blue-500 text-white shadow-md" : "hover:bg-blue-500 hover:text-white"}`}>
               {section}
             </span>
