@@ -8,11 +8,11 @@ import AreaOfExpertise from "../areaExpertise/areaExpertise.jsx";
 
 export default function Home() {
   return (
-    <div className="bg-white text-orange-500 min-h-screen flex flex-col">
+    <div className="bg-white text-blue-500 min-h-screen flex flex-col">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center text-center pb-24 pt-36 md:px-20 bg-gradient-to-r from-orange-400 to-orange-500 text-white">
+      <section className="relative flex flex-col items-center text-center pb-24 pt-36 md:px-20 bg-gradient-to-r from-blue-400 to-blue-500 text-white">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -39,10 +39,10 @@ export default function Home() {
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
           className="mt-6 flex flex-col md:flex-row gap-4"
         >
-          <button className="bg-white text-orange-600 px-6 py-3 text-lg font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition">
+          <button className="bg-white text-blue-600 px-6 py-3 text-lg font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition">
             Book a Consultation
           </button>
-          <button className="border-2 border-white text-white px-6 py-3 text-lg font-semibold rounded-lg shadow-lg hover:bg-white hover:text-orange-600 transition">
+          <button className="border-2 border-white text-white px-6 py-3 text-lg font-semibold rounded-lg shadow-lg hover:bg-white hover:text-blue-600 transition">
             Learn More
           </button>
         </motion.div>

@@ -49,7 +49,7 @@ export default function ExpertSection() {
         <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
           Our experienced consultants provide top-tier guidance across multiple industries.
         </p>
-        <div className="w-20 h-1 bg-orange-500 mx-auto mt-4"></div>
+        <div className="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
       </div>
 
       {/* Experts Grid */}
@@ -62,10 +62,10 @@ export default function ExpertSection() {
             <img 
               src={expert.image} 
               alt={expert.name} 
-              className="w-32 h-32 mx-auto rounded-full object-cover border-4 border-orange-500"
+              className="w-32 h-32 mx-auto rounded-full object-cover border-4 border-blue-500"
             />
             <h3 className="mt-6 text-2xl font-semibold text-gray-900">{expert.name}</h3>
-            <p className="text-orange-600 font-medium">{expert.role}</p>
+            <p className="text-blue-600 font-medium">{expert.role}</p>
             <p className="text-gray-700 text-md mt-3">{expert.description}</p>
           </div>
         ))}

@@ -112,7 +112,7 @@ export default function Login() {
   return (
     <div className="flex h-screen bg-white">
       {/* Left Section - Form */}
-      <div className="w-1/2 flex items-center justify-center p-10">
+      <div className="w-1/2 flex items-center justify-center p-10 mt-20">
         <div className="bg-white shadow-lg rounded-2xl p-10 w-full max-w-md border border-orange-300">
           <h2 className="text-3xl font-bold text-orange-600 mb-6 text-center">{isLogin ? "Sign In" : "Sign Up"}</h2>
 

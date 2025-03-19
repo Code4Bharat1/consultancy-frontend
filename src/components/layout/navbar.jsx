@@ -14,63 +14,41 @@ export default function Navbar() {
 
     // Check if on login or register page and apply white background
     if (pathname.includes("login") || pathname.includes("register")) {
-      setNavbarBg("bg-white shadow-md text-orange-500");
+      setNavbarBg("bg-white shadow-md text-blue-500");
       return; // Skip scroll detection for login/register pages
     }
 
     // Function to detect scroll and change navbar background
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        setNavbarBg("bg-white shadow-md text-orange-500"); // White navbar when scrolled
+        setNavbarBg("bg-white shadow-md text-blue-500");
       } else {
-        setNavbarBg("bg-transparent text-white"); // Transparent when at top
+        setNavbarBg("bg-transparent text-white");
       }
     };
 
-    // Add scroll listener
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll); // Cleanup event listener
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
   return (
     <nav className={`fixed top-0 left-0 w-full flex justify-between items-center px-10 py-5 z-50 transition-all duration-300 ${navbarBg}`}>
-      {/* Logo on the Left */}
       <div className="text-4xl font-extrabold tracking-wide">Consultancy</div>
 
-      {/* Navbar Links on the Right */}
       <div className="flex items-center space-x-6">
-        <Link key="home" href={`/`}>
-          <span
-            className={`px-4 py-2 rounded-full font-semibold transition-all cursor-pointer ${
-              activeSection === `/`
-                ? "bg-orange-500 text-white shadow-md"
-                : "hover:bg-orange-500 hover:text-white"
-            }`}
-          >
+        <Link href="/">
+          <span className={`px-4 py-2 rounded-full font-semibold transition-all cursor-pointer ${activeSection === "/" ? "bg-blue-500 text-white shadow-md" : "hover:bg-blue-500 hover:text-white"}`}>
             Home
           </span>
         </Link>
-        {["AboutUs", "ContactUs"].map((section) => {
-          const link = section.toLowerCase().replace(" ", "-");
-          return (
-            <Link key={section} href={`/#${link}`}>
-              <span
-                className={`px-4 py-2 rounded-full font-semibold transition-all cursor-pointer ${
-                  activeSection === `/${link}`
-                    ? "bg-orange-500 text-white shadow-md"
-                    : "hover:bg-orange-500 hover:text-white"
-                }`}
-              >
-                {section}
-              </span>
-            </Link>
-          );
-        })}
+        {["AboutUs", "ContactUs"].map((section) => (
+          <Link key={section} href={`/#${section.toLowerCase()}`}>
+            <span className={`px-4 py-2 rounded-full font-semibold transition-all cursor-pointer ${activeSection === `/${section.toLowerCase()}` ? "bg-blue-500 text-white shadow-md" : "hover:bg-blue-500 hover:text-white"}`}>
+              {section}
+            </span>
+          </Link>
+        ))}
 
-        {/* Profile Icon */}
         <Link href="/profile">
           <User className="cursor-pointer hover:opacity-80" size={24} />
         </Link>
