@@ -1,37 +1,74 @@
+"use client";
 import React from "react";
-import Image from "next/image";
+
+const experts = [
+  {
+    name: "Dr. Sarah Thompson",
+    role: "Medical Consultant",
+    description: "Over 15 years of experience in medical consultancy, helping healthcare professionals navigate the industry.",
+    image: "/experts/expert1.jpg",
+  },
+  {
+    name: "Mark Robinson",
+    role: "Financial Advisor",
+    description: "Specialist in investment strategies and wealth management, guiding businesses to financial success.",
+    image: "/experts/expert2.jpg",
+  },
+  {
+    name: "Emily Carter",
+    role: "Career Coach",
+    description: "Expert in career guidance and job market trends, helping professionals reach their full potential.",
+    image: "/experts/expert3.jpg",
+  },
+  {
+    name: "James Anderson",
+    role: "Legal Consultant",
+    description: "Experienced legal advisor providing businesses with compliance and legal risk mitigation strategies.",
+    image: "/experts/expert4.jpg",
+  },
+  {
+    name: "Sophia Martinez",
+    role: "Educational Consultant",
+    description: "Helping institutions and students with curriculum development and academic career planning.",
+    image: "/experts/expert5.jpg",
+  },
+  {
+    name: "Aquib Hingwala",
+    role: "IT Expert & Prompt Engineer",
+    description: "Backend and Frontend master helping juniors make impactful websites using chatgpt.",
+    image: "/experts/expert6.jpg",
+  }
+];
 
 export default function ExpertSection() {
   return (
-    <section className="bg-white py-16">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
-        {/* Expert Photo and Name (Left) */}
-        <div className="flex flex-col items-center md:items-start">
-          <div className="w-48 h-58 rounded-full overflow-hidden">
-            <Image 
-              src="/expert.jpg" 
-              alt="Expert Photo" 
-              width={192} 
-              height={192}  
+    <section id="experts" className="py-24 px-6 md:px-20 bg-gray-50">
+      {/* Section Title */}
+      <div className="text-center">
+        <h2 className="text-5xl font-bold text-gray-900">Meet Our Experts</h2>
+        <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+          Our experienced consultants provide top-tier guidance across multiple industries.
+        </p>
+        <div className="w-20 h-1 bg-orange-500 mx-auto mt-4"></div>
+      </div>
+
+      {/* Experts Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-16">
+        {experts.map((expert, index) => (
+          <div 
+            key={index} 
+            className="bg-white p-8 rounded-lg shadow-lg text-center transform transition-all duration-300 hover:shadow-xl hover:scale-105"
+          >
+            <img 
+              src={expert.image} 
+              alt={expert.name} 
+              className="w-32 h-32 mx-auto rounded-full object-cover border-4 border-orange-500"
             />
+            <h3 className="mt-6 text-2xl font-semibold text-gray-900">{expert.name}</h3>
+            <p className="text-orange-600 font-medium">{expert.role}</p>
+            <p className="text-gray-700 text-md mt-3">{expert.description}</p>
           </div>
-          <h3 className="mt-4 text-2xl font-bold text-gray-800 ml-2">Aquib Hingwala</h3>
-        </div>
-        {/* Expert Information (Right) */}
-        <div className="mt-8 md:mt-0 md:ml-20 text-center md:text-left">
-          <p className="text-gray-700 text-2xl">
-            Aquib Hingwala is a renowned expert with over 20 years of experience in his field. His innovative approach and deep understanding of industry trends have made him a trusted consultant for numerous Fortune 500 companies.
-          </p>
-          <p className="text-gray-700 mt-4 text-2xl">
-            His passion for excellence and commitment to providing tailored solutions has empowered businesses to reach their full potential. John’s insights are highly valued in strategy sessions and high-level consultations.
-          </p>
-          <p className="text-gray-700 mt-4 text-2xl">
-            In addition to his professional accomplishments, John is also a sought-after speaker and mentor, sharing his expertise at international conferences and educational events.
-          </p>
-          <p className="text-gray-700 mt-4 text-2xl">
-            Contact: john.doe@example.com
-          </p>
-        </div>
+        ))}
       </div>
     </section>
   );
