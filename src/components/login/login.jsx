@@ -38,7 +38,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "http://localhost:3046/api/auth/login",
         { email: formData.email, password: formData.password },
         { headers: { "Content-Type": "application/json" }, withCredentials: true }
       );
@@ -80,7 +80,7 @@ export default function Login() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "http://localhost:3046/api/auth/register",
         {
           name: formData.name,
           email: formData.email,
@@ -113,8 +113,8 @@ export default function Login() {
     <div className="flex h-screen bg-white">
       {/* Left Section - Form */}
       <div className="w-1/2 flex items-center justify-center p-10 mt-20">
-        <div className="bg-white shadow-lg rounded-2xl p-10 w-full max-w-md border border-orange-300">
-          <h2 className="text-3xl font-bold text-orange-600 mb-6 text-center">{isLogin ? "Sign In" : "Sign Up"}</h2>
+        <div className="bg-white shadow-lg rounded-2xl p-10 w-full max-w-md border border-blue-300">
+          <h2 className="text-3xl font-bold text-blue-600 mb-6 text-center">{isLogin ? "Sign In" : "Sign Up"}</h2>
 
           {message && <p className="text-green-600 text-center mb-4">{message}</p>}
           {error && <p className="text-red-600 text-center mb-4">{error}</p>}
@@ -122,83 +122,83 @@ export default function Login() {
           <form onSubmit={isLogin ? handleLogin : handleRegister}>
             {!isLogin && (
               <div className="mb-4">
-                <label className="block text-orange-700 text-sm font-semibold mb-2">Name</label>
+                <label className="block text-blue-500 text-sm font-semibold mb-2">Name</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your Name"
                   required
                 />
               </div>
             )}
             <div className="mb-4">
-              <label className="block text-orange-700 text-sm font-semibold mb-2">Email</label>
+              <label className="block text-blue-700 text-sm font-semibold mb-2">Email</label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Your Email"
                 required
               />
             </div>
             {!isLogin && (
               <div className="mb-4">
-                <label className="block text-orange-700 text-sm font-semibold mb-2">Phone Number</label>
+                <label className="block text-blue-700 text-sm font-semibold mb-2">Phone Number</label>
                 <input
                   type="text"
                   name="mobile"
                   value={formData.mobile}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your Phone Number"
                   required
                 />
               </div>
             )}
             <div className="mb-4">
-              <label className="block text-orange-700 text-sm font-semibold mb-2">Password</label>
+              <label className="block text-blue-700 text-sm font-semibold mb-2">Password</label>
               <input
                 type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter your Password"
                 required
               />
             </div>
             {!isLogin && (
               <div className="mb-6">
-                <label className="block text-orange-700 text-sm font-semibold mb-2">Confirm Password</label>
+                <label className="block text-blue-700 text-sm font-semibold mb-2">Confirm Password</label>
                 <input
                   type="password"
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none text-black focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none text-black focus:ring-2 focus:ring-blue-500"
                   placeholder="Confirm Password"
                   required
                 />
               </div>
             )}
-            <button type="submit" className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition">
+            <button type="submit" className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition">
               {isLogin ? "Sign In" : "Sign Up"}
             </button>
-            <p className="text-sm text-center text-orange-700 mt-4">
+            <p className="text-sm text-center text-blue-700 mt-4">
               {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-              <button type="button" onClick={toggleForm} className="text-orange-500 font-medium">
+              <button type="button" onClick={toggleForm} className="text-blue-500 font-medium">
                 {isLogin ? "Sign Up" : "Sign In"}
               </button>
             </p>
           </form>
         </div>
       </div>
-      <div className="w-1/2 bg-cover bg-center mb-2 mr-1" style={{ backgroundImage: "url('/loginImage.jpg')" }}></div>
+      <div className="w-1/2 bg-cover bg-center mb-2 mr-1 mt-20" style={{ backgroundImage: "url('/loginImage.jpg')" }}></div>
     </div>
   );
 }

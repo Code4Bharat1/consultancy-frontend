@@ -51,7 +51,7 @@ export default function AppointmentForm() {
 
     try {
       const bookingResponse = await axios.post(
-        "http://localhost:5000/api/appointments/book",
+        "http://localhost:3046/api/appointments/book",
         {
           type: formData.category,
           date: formData.date,
@@ -68,7 +68,7 @@ export default function AppointmentForm() {
         const appointmentId = bookingResponse.data.appointment._id;
 
         const paymentResponse = await axios.post(
-          "http://localhost:5000/api/appointments/initiate-payment",
+          "http://localhost:3046/api/appointments/initiate-payment",
           { appointmentId },
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -86,12 +86,8 @@ export default function AppointmentForm() {
   };
 
   return (
-    <div
-      className="relative min-h-screen bg-cover bg-center flex flex-col"
-      style={{ backgroundImage: "url('/bg-image.jpg')" }}
-    >
+    <div className="relative min-h-screen bg-gradient-to-br from-blue-600 to-blue-800 flex flex-col">
       <Navbar />
-
       {/* Dark Overlay with Conditional Blur */}
       <div
         className={`absolute inset-0 bg-black bg-opacity-50 transition-all duration-300 ${
@@ -99,24 +95,25 @@ export default function AppointmentForm() {
         }`}
       ></div>
 
-      {/* Appointment Form Container */}
-      <div className="relative z-10 flex-grow flex items-center justify-center mt-10">
-        <div className="w-full max-w-lg bg-white p-8 rounded-xl shadow-lg border border-gray-200 animate-popUp">
-          <h2 className="text-3xl font-bold text-center text-black mb-6">
+      {/* Main Section */}
+      <div className="relative z-10 flex-grow flex items-center justify-center py-16">
+        <div className="max-w-4xl mx-auto bg-white p-10 rounded-3xl shadow-xl">
+          <h2 className="text-4xl font-bold text-center text-blue-600 mb-6">
             Book an Appointment
           </h2>
+          <p className="text-lg text-gray-700 text-center mb-6">
+            Choose a category, pick a date and time, and enter your details to book your consultation.
+          </p>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="space-y-6">
             {/* Category Selection */}
-            <div className="mb-4">
-              <label className="block text-black font-semibold mb-1">
-                Select Category
-              </label>
+            <div className="mb-6">
+              <label className="block text-blue-600 font-semibold mb-2">Select Category</label>
               <select
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+                className="w-full p-3 border border-gray-300 text-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               >
                 <option value="">Select a category</option>
@@ -128,30 +125,26 @@ export default function AppointmentForm() {
             </div>
 
             {/* Date Input */}
-            <div className="mb-4">
-              <label className="block text-black font-semibold mb-1">
-                Preferred Date
-              </label>
+            <div className="mb-6">
+              <label className="block text-blue-600 font-semibold mb-2">Preferred Date</label>
               <input
                 type="date"
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+                className="w-full p-3 border border-gray-300 text-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
 
             {/* Time Slot Selection */}
-            <div className="mb-4">
-              <label className="block text-black font-semibold mb-1">
-                Select Time Slot
-              </label>
+            <div className="mb-6">
+              <label className="block text-blue-600 font-semibold mb-2">Select Time Slot</label>
               <select
                 name="timeSlot"
                 value={formData.timeSlot}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+                className="w-full p-3 border border-gray-300 text-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               >
                 <option value="">Select a time</option>
@@ -163,32 +156,28 @@ export default function AppointmentForm() {
             </div>
 
             {/* Name Input */}
-            <div className="mb-4">
-              <label className="block text-black font-semibold mb-1">
-                Full Name
-              </label>
+            <div className="mb-6">
+              <label className="block text-blue-600 font-semibold mb-2">Full Name</label>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+                className="w-full p-3 border border-gray-300 text-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter full name"
                 required
               />
             </div>
 
             {/* Mobile Number Input */}
-            <div className="mb-4">
-              <label className="block text-black font-semibold mb-1">
-                Mobile Number
-              </label>
+            <div className="mb-6">
+              <label className="block text-blue-600 font-semibold mb-2">Mobile Number</label>
               <input
                 type="tel"
                 name="mobile"
                 value={formData.mobile}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+                className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter mobile number"
                 required
               />
@@ -198,9 +187,9 @@ export default function AppointmentForm() {
             <button
               type="submit"
               disabled={!isFormValid}
-              className={`w-full py-2 rounded font-semibold transition-colors ${
+              className={`w-full py-3 rounded-lg font-semibold transition-colors ${
                 isFormValid
-                  ? "bg-blue-300 text-black hover:bg-blue-500"
+                  ? "bg-blue-500 text-white hover:bg-blue-600"
                   : "bg-gray-300 text-gray-500 cursor-not-allowed"
               }`}
             >

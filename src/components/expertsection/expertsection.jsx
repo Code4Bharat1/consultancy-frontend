@@ -3,7 +3,7 @@ import React from "react";
 
 const experts = [
   {
-    name: "Dr. Sarah Thompson",
+    name: "Dr. John Thompson",
     role: "Medical Consultant",
     description: "Over 15 years of experience in medical consultancy, helping healthcare professionals navigate the industry.",
     image: "/experts/expert1.jpg",

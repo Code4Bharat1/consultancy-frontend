@@ -32,7 +32,7 @@ export default function Home() {
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           className="mt-4 text-lg md:text-xl max-w-3xl text-white leading-relaxed"
         >
-          We provide strategic solutions, insight-driven guidance, and industry expertise to empower businesses, professionals, and entrepreneurs for long-term success.
+          We provide strategic solutions, for long-term success.
         </motion.p>
 
         {/* Call-to-Action Buttons */}

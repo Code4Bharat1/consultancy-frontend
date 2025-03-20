@@ -8,10 +8,7 @@ export default function Footer() {
           
           {/* About Section */}
           <div>
-            <h3 className="text-2xl font-bold">About Us</h3>
-            <p className="mt-3 text-sm text-gray-200">
-              We are a leading consultancy firm specializing in business strategy, career guidance, and financial solutions. Our team of experts provides top-tier advice to help individuals and businesses achieve success.
-            </p>
+            <a href="/aboutus"><h3 className="text-2xl font-bold hover:text-blue-600">About Us</h3></a>
           </div>
 
           {/* Quick Links */}
@@ -20,17 +17,12 @@ export default function Footer() {
             <ul className="mt-3 space-y-2">
               <li><a href="/" className="text-gray-200 hover:text-white transition">Home</a></li>
               <li><a href="/services" className="text-gray-200 hover:text-white transition">Services</a></li>
-              <li><a href="/about" className="text-gray-200 hover:text-white transition">About Us</a></li>
-              <li><a href="/contact" className="text-gray-200 hover:text-white transition">Contact</a></li>
             </ul>
           </div>
 
           {/* Contact Information */}
           <div>
-            <h3 className="text-2xl font-bold">Contact Us</h3>
-            <p className="mt-3 text-sm text-gray-200">123 Business Avenue, New York, NY</p>
-            <p className="mt-1 text-sm text-gray-200">Phone: +1 (234) 567-890</p>
-            <p className="mt-1 text-sm text-gray-200">Email: contact@consultancy.com</p>
+           <a href="/contactus"> <h3 className="text-2xl font-bold hover:text-blue-300 transition">Contact Us</h3></a>
           </div>
         </div>
 
