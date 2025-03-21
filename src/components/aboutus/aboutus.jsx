@@ -14,7 +14,7 @@ export default function AboutUs() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-5xl font-extrabold"
+          className="text-4xl font-extrabold"
         >
           About Our Consultancy
         </motion.h1>
