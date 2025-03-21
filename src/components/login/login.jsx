@@ -38,7 +38,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        "http://consultancy-api.code4bharat.com/api/auth/login",
+        "https://consultancy-api.code4bharat.com/api/auth/login",
         { email: formData.email, password: formData.password },
         { headers: { "Content-Type": "application/json" }, withCredentials: true }
       );
@@ -80,7 +80,7 @@ export default function Login() {
 
     try {
       await axios.post(
-        "http://consultancy-api.code4bharat.com/api/auth/register",
+        "https://consultancy-api.code4bharat.com/api/auth/register",
         {
           name: formData.name,
           email: formData.email,
