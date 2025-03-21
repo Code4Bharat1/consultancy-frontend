@@ -51,7 +51,7 @@ export default function AppointmentForm() {
 
     try {
       const bookingResponse = await axios.post(
-        "http://localhost:3046/api/appointments/book",
+        "https://consultancy-api.code4bharat.com/api/appointments/book",
         {
           type: formData.category,
           date: formData.date,
@@ -68,7 +68,7 @@ export default function AppointmentForm() {
         const appointmentId = bookingResponse.data.appointment._id;
 
         const paymentResponse = await axios.post(
-          "http://localhost:3046/api/appointments/initiate-payment",
+          "https:/consultancy-api.code4bharat.com//api/appointments/initiate-payment",
           { appointmentId },
           {
             headers: { Authorization: `Bearer ${token}` },
