@@ -6,38 +6,38 @@ const expertiseFields = [
   {
     title: "Medical Consultancy",
     description: "Expert guidance for healthcare professionals and institutions.",
-    gradient: "bg-gradient-to-br from-red-500 to-red-700",
+    gradient: "bg-red-500 hover:bg-red-700",
   },
   {
     title: "Educational Consultancy",
     description: "Helping students and educators optimize learning strategies.",
-    gradient: "bg-gradient-to-br from-blue-500 to-blue-700",
+    gradient: "bg-blue-500 hover:bg-blue-700",
   },
   {
     title: "Career Guidance",
     description: "Helping individuals navigate career paths and achieve professional goals.",
-    gradient: "bg-gradient-to-br from-green-500 to-green-700",
+    gradient: "bg-green-500 hover:bg-green-700",
   },
   {
     title: "Financial Advisory",
     description: "Providing insights on investments, wealth management, and planning.",
-    gradient: "bg-gradient-to-br from-purple-500 to-purple-700",
+    gradient: "bg-purple-500 hover:bg-purple-700",
   },
   {
     title: "Legal Consultancy",
     description: "Expert legal advice for businesses and individuals.",
-    gradient: "bg-gradient-to-br from-yellow-500 to-yellow-700",
+    gradient: "bg-yellow-500 hover:bg-yellow-700",
   },
   {
     title: "Technology & IT Solutions",
     description: "Consultation for digital transformation, cybersecurity, and IT solutions.",
-    gradient: "bg-gradient-to-br from-teal-500 to-teal-700",
-  },
-  {
-    title: "Marketing & Branding",
-    description: "Helping businesses build strong brand identities and effective marketing strategies.",
-    gradient: "bg-gradient-to-br from-orange-500 to-orange-700",
+    gradient: "bg-teal-500 hover:bg-teal-700",
   }
+  // {
+  //   title: "Marketing & Branding",
+  //   description: "Helping businesses build strong brand identities and effective marketing strategies.",
+  //   gradient: "bg-orange-500 hover:bg-orange-700",
+  // }
 ];
 
 export default function AreaOfExpertise() {
@@ -53,11 +53,12 @@ export default function AreaOfExpertise() {
       </div>
 
       {/* Expertise Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
+        {/* First Two Rows */}
         {expertiseFields.slice(0, 6).map((field, index) => (
           <Link href="/appointments" key={index}>
             <div 
-              className={`${field.gradient} text-white p-8 rounded-xl shadow-lg cursor-pointer transform transition-all duration-300 hover:shadow-xl hover:scale-105 text-center`}
+              className={`w-full h-48 ${field.gradient} text-white p-8 rounded-xl shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center text-center`}
             >
               <h3 className="text-2xl font-semibold">{field.title}</h3>
               <p className="mt-2">{field.description}</p>
@@ -65,15 +66,15 @@ export default function AreaOfExpertise() {
           </Link>
         ))}
 
-        {/* Centered Marketing & Branding Box */}
-        <Link href="/appointments">
+       { /*✅ Marketing & Branding Centered Below Legal Consultancy*/}
+        {/* <Link href="/appointments">
           <div 
-            className={`${expertiseFields[6].gradient} text-white p-8 rounded-xl shadow-lg cursor-pointer transform transition-all duration-300 hover:shadow-xl hover:scale-105 text-center col-span-full lg:col-start-2 lg:col-end-3`}
+            className={`w-full h-48 ${expertiseFields[6].gradient} text-white p-8 rounded-xl shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center text-center lg:col-start-2 lg:col-span-1`}
           >
             <h3 className="text-2xl font-semibold">{expertiseFields[6].title}</h3>
             <p className="mt-2">{expertiseFields[6].description}</p>
           </div>
-        </Link>
+        </Link> */}
       </div>
     </section>
   );
