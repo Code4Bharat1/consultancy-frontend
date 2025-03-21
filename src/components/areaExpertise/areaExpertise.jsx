@@ -34,7 +34,7 @@ const expertiseFields = [
     image: "/images/technology.jpg",
   },
   {
-    title: "Marketing & Branding",
+    title: "Marketing",
     description: "Helping businesses build strong brand identities and effective marketing strategies.",
     image: "/images/marketing.jpg",
   }
