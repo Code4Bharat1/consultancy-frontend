@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 const expertiseFields = [
   {
@@ -54,22 +55,25 @@ export default function AreaOfExpertise() {
       {/* Expertise Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-16">
         {expertiseFields.slice(0, 6).map((field, index) => (
-          <div 
-            key={index} 
-            className={`${field.gradient} text-white p-8 rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-xl hover:scale-105 text-center`}
-          >
-            <h3 className="text-2xl font-semibold">{field.title}</h3>
-            <p className="mt-2">{field.description}</p>
-          </div>
+          <Link href="/appointments" key={index}>
+            <div 
+              className={`${field.gradient} text-white p-8 rounded-xl shadow-lg cursor-pointer transform transition-all duration-300 hover:shadow-xl hover:scale-105 text-center`}
+            >
+              <h3 className="text-2xl font-semibold">{field.title}</h3>
+              <p className="mt-2">{field.description}</p>
+            </div>
+          </Link>
         ))}
 
         {/* Centered Marketing & Branding Box */}
-        <div 
-          className={`${expertiseFields[6].gradient} text-white p-8 rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-xl hover:scale-105 text-center col-span-full lg:col-start-2 lg:col-end-3`}
-        >
-          <h3 className="text-2xl font-semibold">{expertiseFields[6].title}</h3>
-          <p className="mt-2">{expertiseFields[6].description}</p>
-        </div>
+        <Link href="/appointments">
+          <div 
+            className={`${expertiseFields[6].gradient} text-white p-8 rounded-xl shadow-lg cursor-pointer transform transition-all duration-300 hover:shadow-xl hover:scale-105 text-center col-span-full lg:col-start-2 lg:col-end-3`}
+          >
+            <h3 className="text-2xl font-semibold">{expertiseFields[6].title}</h3>
+            <p className="mt-2">{expertiseFields[6].description}</p>
+          </div>
+        </Link>
       </div>
     </section>
   );
