@@ -6,38 +6,38 @@ const expertiseFields = [
   {
     title: "Medical Consultancy",
     description: "Expert guidance for healthcare professionals and institutions.",
-    gradient: "bg-red-500 hover:bg-red-700",
+    image: "/images/medical.jpg",
   },
   {
     title: "Educational Consultancy",
     description: "Helping students and educators optimize learning strategies.",
-    gradient: "bg-blue-500 hover:bg-blue-700",
+    image: "/images/education.jpg",
   },
   {
     title: "Career Guidance",
     description: "Helping individuals navigate career paths and achieve professional goals.",
-    gradient: "bg-green-500 hover:bg-green-700",
+    image: "/images/career.jpg",
   },
   {
     title: "Financial Advisory",
     description: "Providing insights on investments, wealth management, and planning.",
-    gradient: "bg-purple-500 hover:bg-purple-700",
+    image: "/images/finance.jpg",
   },
   {
     title: "Legal Consultancy",
     description: "Expert legal advice for businesses and individuals.",
-    gradient: "bg-yellow-500 hover:bg-yellow-700",
+    image: "/images/legal.jpg",
   },
   {
     title: "Technology & IT Solutions",
     description: "Consultation for digital transformation, cybersecurity, and IT solutions.",
-    gradient: "bg-teal-500 hover:bg-teal-700",
+    image: "/images/technology.jpg",
+  },
+  {
+    title: "Marketing & Branding",
+    description: "Helping businesses build strong brand identities and effective marketing strategies.",
+    image: "/images/marketing.jpg",
   }
-  // {
-  //   title: "Marketing & Branding",
-  //   description: "Helping businesses build strong brand identities and effective marketing strategies.",
-  //   gradient: "bg-orange-500 hover:bg-orange-700",
-  // }
 ];
 
 export default function AreaOfExpertise() {
@@ -54,27 +54,34 @@ export default function AreaOfExpertise() {
 
       {/* Expertise Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
-        {/* First Two Rows */}
         {expertiseFields.slice(0, 6).map((field, index) => (
           <Link href="/appointments" key={index}>
-            <div 
-              className={`w-full h-48 ${field.gradient} text-white p-8 rounded-xl shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center text-center`}
-            >
-              <h3 className="text-2xl font-semibold">{field.title}</h3>
-              <p className="mt-2">{field.description}</p>
+            <div className="relative w-full h-56 rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105">
+              {/* Background Image */}
+              <img src={field.image} alt={field.title} className="w-full h-full object-cover" />
+
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 flex flex-col justify-center items-center text-center transition-all duration-300">
+                <h3 className="text-2xl font-semibold text-white">{field.title}</h3>
+                <p className="text-white mt-2 px-4">{field.description}</p>
+              </div>
             </div>
           </Link>
         ))}
 
-       { /*✅ Marketing & Branding Centered Below Legal Consultancy*/}
-        {/* <Link href="/appointments">
-          <div 
-            className={`w-full h-48 ${expertiseFields[6].gradient} text-white p-8 rounded-xl shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center text-center lg:col-start-2 lg:col-span-1`}
-          >
-            <h3 className="text-2xl font-semibold">{expertiseFields[6].title}</h3>
-            <p className="mt-2">{expertiseFields[6].description}</p>
+        {/* Marketing & Branding Positioned Below Legal Consultancy */}
+        <Link href="/appointments">
+          <div className="relative w-full h-56 rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 lg:col-start-2 lg:col-span-1">
+            {/* Background Image */}
+            <img src={expertiseFields[6].image} alt={expertiseFields[6].title} className="w-full h-full object-cover" />
+
+            {/* Hover Overlay */}
+            <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 flex flex-col justify-center items-center text-center transition-all duration-300">
+              <h3 className="text-2xl font-semibold text-white">{expertiseFields[6].title}</h3>
+              <p className="text-white mt-2 px-4">{expertiseFields[6].description}</p>
+            </div>
           </div>
-        </Link> */}
+        </Link>
       </div>
     </section>
   );
