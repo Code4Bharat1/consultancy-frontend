@@ -15,11 +15,16 @@ export default function AppointmentForm() {
 
   const [token, setToken] = useState("");
   const [blurBg, setBlurBg] = useState(false);
+  const [error, setError] = useState("");
   const router = useRouter();
 
   useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
-    setToken(storedToken);
+    if (!storedToken) {
+      router.push("/login");
+    } else {
+      setToken(storedToken);
+    }
   }, []);
 
   const handleFocus = () => setBlurBg(true);
@@ -33,21 +38,14 @@ export default function AppointmentForm() {
   };
 
   const isFormValid =
-    formData.category !== "" &&
-    formData.date !== "" &&
-    formData.timeSlot !== "" &&
-    formData.name !== "" &&
-    formData.mobile !== "";
+    formData.category &&
+    formData.date &&
+    formData.timeSlot &&
+    formData.name &&
+    formData.mobile;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const token = localStorage.getItem("authToken");
-
-    if (!token) {
-      router.push("/login");
-      return;
-    }
 
     try {
       const bookingResponse = await axios.post(
@@ -60,7 +58,9 @@ export default function AppointmentForm() {
           mobile: formData.mobile,
         },
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
@@ -68,7 +68,7 @@ export default function AppointmentForm() {
         const appointmentId = bookingResponse.data.appointment._id;
 
         const paymentResponse = await axios.post(
-          "https:/consultancy-api.code4bharat.com//api/appointments/initiate-payment",
+          "https://consultancy-api.code4bharat.com/api/appointments/initiate-payment",
           { appointmentId },
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -80,34 +80,38 @@ export default function AppointmentForm() {
           window.open(paymentLink, "_blank");
         }
       }
-    } catch (error) {
-      console.error("❌ Error:", error);
+    } catch (err) {
+      setError(
+        err.response?.data?.message || "Something went wrong while booking."
+      );
     }
   };
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-blue-600 to-blue-800 flex flex-col">
       <Navbar />
-      {/* Dark Overlay with Conditional Blur */}
       <div
         className={`absolute inset-0 bg-black bg-opacity-50 transition-all duration-300 ${
           blurBg ? "backdrop-blur-md" : ""
         }`}
       ></div>
 
-      {/* Main Section */}
       <div className="relative z-10 flex-grow flex items-center justify-center py-16">
         <div className="max-w-4xl mx-auto bg-white p-10 rounded-3xl shadow-xl">
           <h2 className="text-4xl font-bold text-center text-blue-600 mb-6">
             Book an Appointment
           </h2>
           <p className="text-lg text-gray-700 text-center mb-6">
-            Choose a category, pick a date and time, and enter your details to book your consultation.
+            Choose a category, pick a date and time, and enter your details to
+            book your consultation.
           </p>
 
+          {error && (
+            <p className="text-center text-red-600 font-medium mb-4">{error}</p>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Category Selection */}
-            <div className="mb-6">
+            <div>
               <label className="block text-blue-600 font-semibold mb-2">Select Category</label>
               <select
                 name="category"
@@ -124,8 +128,7 @@ export default function AppointmentForm() {
               </select>
             </div>
 
-            {/* Date Input */}
-            <div className="mb-6">
+            <div>
               <label className="block text-blue-600 font-semibold mb-2">Preferred Date</label>
               <input
                 type="date"
@@ -137,8 +140,7 @@ export default function AppointmentForm() {
               />
             </div>
 
-            {/* Time Slot Selection */}
-            <div className="mb-6">
+            <div>
               <label className="block text-blue-600 font-semibold mb-2">Select Time Slot</label>
               <select
                 name="timeSlot"
@@ -155,8 +157,7 @@ export default function AppointmentForm() {
               </select>
             </div>
 
-            {/* Name Input */}
-            <div className="mb-6">
+            <div>
               <label className="block text-blue-600 font-semibold mb-2">Full Name</label>
               <input
                 type="text"
@@ -164,13 +165,11 @@ export default function AppointmentForm() {
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full p-3 border border-gray-300 text-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter full name"
                 required
               />
             </div>
 
-            {/* Mobile Number Input */}
-            <div className="mb-6">
+            <div>
               <label className="block text-blue-600 font-semibold mb-2">Mobile Number</label>
               <input
                 type="tel"
@@ -178,12 +177,10 @@ export default function AppointmentForm() {
                 value={formData.mobile}
                 onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter mobile number"
                 required
               />
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={!isFormValid}
